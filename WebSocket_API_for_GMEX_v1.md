@@ -52,7 +52,8 @@ GMEX官方的生产环境：
 type AssetD struct {
     Sym         string  // 合约符合/交易对符号
     Beg         int64   // 开始时间,毫秒
-    Expire      int64   // 到期日期
+    DenyOpenAfter   int64   // 到期前禁止开仓时间,毫秒
+    Expire      int64   // 到期时间,毫秒
     PrzMaxChg   int32   // 市价委托的撮合的最多次数。比如5
     PrzMinInc   float64 // 最小的价格变化
     PrzMax      float64 // 最大委托价格
