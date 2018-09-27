@@ -43,7 +43,7 @@ GMEX官方的生产环境：
 | :-----   | :-----   |
 |req|用户的请求操作动作，如： GetAssetD，GetCompositeIndex，GetHistKLine等|
 |rid|用户发送请求的唯一编号，由于websocket是异步通讯，用户需要通过匹配收到消息的rid和自己发送的rid来匹配操作和应答。|
-|expires|消息超时，毫秒，建议每次发送请求时填写当前时间加1秒。|
+|expires|消息超时，毫秒，建议每次发送请求时填写当前时间加1秒。一般宜在初始化时先用Time消息获取服务端时间,可以相对时差与服务端保持同步。|
 
 
 
@@ -52,33 +52,31 @@ GMEX官方的生产环境：
 type AssetD struct {
     Sym         string  // 合约符合/交易对符号
     Beg         int64   // 开始时间,毫秒
-    Expire      int64   // 到期日期
+    DenyOpenAfter int64 // 到期前禁止开仓时间(ms)
+    Expire      int64   // 到期时间(ms)
     PrzMaxChg   int32   // 市价委托的撮合的最多次数。比如5
-    PrzMinInc   float64 // 最小的价格变化 0.5 USD
-    PrzMax      float64 // 最大委托价格	1,000,000
-    OrderMaxQty float64 // 最大委托数量	10,000,000
+    PrzMinInc   float64 // 最小的价格变化
+    PrzMax      float64 // 最大委托价格
+    OrderMaxQty float64 // 最大委托数量
     LotSz       float64 // 最小合约数量,当前只支持为1;
     PrzM        float64 // 标记价格
-    MIR         float64 // 起始保证金  1.00% + 开仓佣金 + 平仓佣金 Mgn Initial Ratio
-    MMR         float64 // 维持保证金  0.50% + 平仓佣金 + 资金费率 Mgn Maintaince Ratio
+    MIR         float64 // 起始保证金率
+    MMR         float64 // 维持保证金率
     OrderMinVal float64 // 委托的最小价值
-    PrzLatest   float64 // 统计信息, 最新成交价格
-    OpenInterest  int64 // 统计信息, 持仓量
+    PrzLatest   float64 // 最新成交价格
+    OpenInterest  int64 // 持仓量
     PrzIndex    float64 // 指数价格
-    PosLmtStart int64   // 当总开仓到达这个数字，启动个人开仓率限制。
-    PosOpenRatio    float64 // 个人占用开仓
+    PosLmtStart int64   // 个人持仓比例激活条件
+    PosOpenRatio    float64 // 个人持仓最大比例
     FeeMkrR     float64 // 提供流动性的费率
     FeeTkrR     float64 // 消耗流动性的费率
     Mult        int64   // 乘数
     FromC       string  // 从什么货币
     ToC         string  // 兑换为什么货币
     TrdCls      int32   // 交易类型, 1-现货交易, 2-期货交易, 3-永续
-    MkSt        int32   // 市场状态, 0-异常状态, 1-正常运行, 2-自动减仓, 3-暂停
-    Flag        int32   // 标志, 0-无效; 1-报价方法: 对?使用 XBT 进行 USD 买卖，保证金和盈亏采用 XBT 进行计算; 2-在必要的情况下，进行自动减仓操作; 4-是否自动结算; 8-禁止开仓;
     SettleCoin  string  // 结算货币
     QuoteCoin   string  // 报价货币
-    SettleR     float64 // 结算费率
-    DenyOpenAfter int64 // 时间节点：当越过了DenyOpenAfter后，不允许开新仓
+    SettleR     float64 // 结算费率    
 }
 ```
 
@@ -381,7 +379,6 @@ type Ord struct {    // **报单结构体字段定义说明**
     UId     string   // 用户Id
     AId     string   // 账户Id
     Sym     string   // 交易符号，比如BTC1809
-    WId     string   // 钱包ID
     OrdId   string   // 服务器端为其分配的ID
     COrdId  string   // 客户端为其分配的ID
     Dir     int32    // 委单方向 买/卖, 1:BID/BUY, -1:ASK/SELL
@@ -416,7 +413,6 @@ type Position struct {    // **持仓结构体字段定义说明**
     AId     string   // 账户Id
     PId     string   // 持仓Id
     Sym     string   // 交易符号，比如BTC1809
-    WId     string   // 钱包Id
     Sz      float64  //仓位(正数为多仓，负数为空仓)
     PrzIni  float64  // 开仓平均价格
     RPNL    float64  // 已实现盈亏
@@ -436,7 +432,6 @@ type Position struct {    // **持仓结构体字段定义说明**
 type Wlt struct {    // **钱包结构体字段定义说明**
     UId     string   // 用户Id
     AId     string   // 账户Id
-    WId     string   // 钱包Id
     Coin    string   // 货币符号 BTC/ETH/GAEA
     Depo    float64  // 入金金额
     WDrw    float64  // 出金金额
@@ -452,7 +447,6 @@ type Wlt struct {    // **钱包结构体字段定义说明**
 type WltLog struct {    // **资金历史结构体字段定义说明**
     UId     string   // 用户Id
     AId     string   // 账户Id
-    WId     string   // 钱包Id
     Seq     string   // 顺序号
     Coin    string   // 货币类型
     Qty     float64  //
@@ -472,7 +466,6 @@ type TrdRec struct {    // **成交结构体字段定义说明**
     UId             string  // 用户Id
     AId             string  // 账户Id
     Sym             string  // 交易对符号
-    WId             string  // 钱包ID
     MatchId         string  // 撮合ID
     OrdId           string  // 报单ID
     Sz              float64 // 数量
