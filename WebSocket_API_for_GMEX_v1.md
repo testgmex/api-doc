@@ -193,8 +193,18 @@ type AssetD struct {
 |args|用户的参数，可选，具体根据req来设置。|
 |signature|消息签名: MD5(Req+ReqId+Args+Expires+API.SecretKey)，小写。|
 
+## 重要说明
 
++ UID 和 AID
+	一个用户对应一个系统内唯一的UID(字符串);
+	一个用户下面可以有多个AID,AID是UID后面加两位构成;
+	每个用户注册出来时会自动创建一个默认的AID,就是UID后面加01;
+	用户可以自己创建多个子账户,因此,一个用户会有多个AID;在系统内部,所有的AID全局唯一;
+	用户可以在自己的子账户之间相互转移自己的所有的数字货币;
+	用户下单时指定自己的子账户,该单的风险可以控制在这个子账户范围内,从而可以控制风险.
+    
 2. 查询当前系统的合约列表(必须参数 AId)： GetAssetD
+
 ```
 # 发送请求消息
 {"req":"GetAssetD","rid":"2","expires":1537710766358,"args":{"AId":"1525354501"},"signature": "1234567890abcdef1234567890abcdef"}
@@ -239,7 +249,7 @@ type AssetD struct {
 5. 查询用户最长的当前有效的报单列表(必须参数 AId)： GetOrders
 ```
 # 发送请求消息
-{"req":"GetOrders","rid":"5","expires":1537711298635,"args":{"AId":"123456701","signature": "1234567890abcdef1234567890abcdef"}}
+{"req":"GetOrders","rid":"5","expires":1537711298635,"args":{"AId":"123456701"},"signature": "1234567890abcdef1234567890abcdef"}
 # 收到返回消息
 {"rid":"5","code":0,"data":[
 {"UId":"1234567","AId":"123456701","Sym":"ETH1812","OrdId":"01CQES0XMVA1CWXJ823B8TV9FA","COrdId":"1537703785880","Dir":-1,"OType":1,"Prz":265,"Qty":1000,"QtyDsp":0,"PrzStop":0,"At":1537703785905,"Upd":1537703785905,"Until":9223372036854775807,"Frz":0,"Status":2,"QtyF":0,"PrzF":0,"Val":0,"StopPrz":0},
