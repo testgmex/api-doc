@@ -172,7 +172,7 @@ type AssetD struct {
 # 
 # API.SecretKey: "uLgAAHMw62di3hUPypuETMWGzHx852swxM7V0b2HObba5gYNNrLkuvQ4I"
 # 例:
-# signature = md5("Login"+"1"+ JSON.stringify({UserName:"example@gaea.com",UserCred:"mVAAADjNHzhvehaEvU$BMJoU7BZk"}) +"1538222696758" + # API.SecretKey)
+# signature = md5("Login"+"1"+ JSON.stringify({UserName:"example@gaea.com",UserCred:"mVAAADjNHzhvehaEvU$BMJoU7BZk"}) +"1538222696758" + API.SecretKey)
 # signature计算的值为:"74c33368e9a1f8d6d13cdf0bf5aa02a8"
 #
 # {"req":"Login","rid":"1","expires":1538222696758,
