@@ -464,14 +464,13 @@ type WltLog struct {    // **资金历史结构体字段定义说明**
     AId     string   // 账户Id
     Seq     string   // 顺序号
     Coin    string   // 货币类型
-    Qty     float64  //
-    Fee     float64  //
+    Qty     float64  // 货币数量
+    Fee     float64  // 手续费
     Peer    string   // 货币地址(假设是出金，则是地址)
     WalBal  float64  //
     At      int64   // 时间
     Op      int32   // 钱包操作: 0-非法, 1-存钱, 2-取钱, 3-已实现盈亏, 4-现货交易, 5-查询
     Via     int32   // OrderVia
-    Info    string  //
     ErrCode int32   // 错误代码
     ErrTxt  string  // 错误文本
     Stat    int32   // OrderStatus
@@ -485,13 +484,11 @@ type TrdRec struct {    // **成交结构体字段定义说明**
     OrdId           string  // 报单ID
     Sz              float64 // 数量
     Prz             float64 // 价格
-    Fee             float64 // 费
-    FeeCoin         string  //
-    At              int64   //
+    Fee             float64 // 手续费
+    FeeCoin         string  // 手续费货币类型
+    At              int64   // 成交时间(ms)
     Via             int32   // 报单来源， 0-无效, 1-WEB, 2-APP, 3-API, 4-平仓Liquidate, 5-ADLEngine, 6-Settlement, 7-Trade, 8-Fee, 9-Depo, 10-Wdrw
-    GrossVal        float64 //
-    HomeNotional    float64 //
-    ForeignNotional float64 //
+
 }
 
 ```
@@ -500,6 +497,41 @@ type TrdRec struct {    // **成交结构体字段定义说明**
 | :------: | :------ |
 |UId | 是用户的系统内部唯一编号, 例: UId:123456|
 |AId | 子账户ID, AId是在UId的后面添加两位数字生成, 01为合约ID, 02为现货ID, 例: UId:123456加01则为AId:12345601|
+|rid | 用户发送请求的唯一编号，由于websocket是异步通讯，用户需要通过匹配收到消息的rid和自己发送的rid来匹配操作和应答,值必须为字符串类型|
 
 
-## 状态码
+
+## 委托状态码
+
+
+| ErrCode| ErrTxt | 描述 |
+|:------:|:------|:------|
+| 0       |  NORERROR| 没有错误  |
+| 1       |  GENERAL | 数据错误 |
+| 2       |  DATA    | 数据错误 |
+| 3       |  NOT_IMPLEMENTED     | 服务器未实现 |
+| 4       |  NO_MARGIN     | 保证金不足 |
+| 5       |  FATAL     | 致命错误 |
+| 6       |  NOT_FOUND     | 未找到 |
+| 7       |  UNKNOWN_DIR     | 未知的委托方向 |
+| 8       |  INVALID_CODE     | 操作码错误 |
+| 9       |  EXISTS     | 已存在 |
+| 10      |  NOT_FOUND_ORD     | 没有找到订单号 |
+| 11      |  PRZ_INVALID     | 价格错误 |
+| 12      |  EXPIRED     | 已过期 |
+| 13      |  NOT_SUFFICIENT     | 资金不足 |
+| 14      |  WILLFILL     | 对于PostOnly，本委托会成交 |
+| 15      |  EXECUTE_FAIL     | 对FillOrKill委托，这表示执行撮合失败 |
+| 16      |  EXCEED_LIMIT_MINVAL     | 超过限制|
+| 17      |  VAL_TOO_SMALL     | 委托价值太小 |
+| 18      |  EXCEED_LIMIT_PRZ_QTY     | 价格或者数量超出限制 |
+| 19      |  DENYOPEN_BY_POS     | 仓位超出限制 |
+| 20      |  DENYOPEN_BY_RD     | 禁止开仓 |
+| 21      |  TRADE_STOPED     |  交易暂停 |
+| 22      |  EXCEED_PRZ_LIQ     | 超过强平价格 |
+| 23      |  TOO_MANY_ORDER     | 太多的委托 |
+| 24      |  DENYOPEN_BY_TIME     | 超出开仓时间限制 |
+| 25      |  MD5_INVALID     | MD5签名验证错误
+| 26      |  RATELIMIT     | 限速
+
+
