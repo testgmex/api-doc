@@ -168,12 +168,17 @@ type AssetD struct {
 # args:
 #    UserName 用户注册的登陆名，一般为用户的注册email地址;
 #    UserCred 为用户申请的API-KEY;
-# signature 用户消息签名: MD5(Req+ReqId+Args+Expires+API.SecretKey)
+# signature 用户消息签名: MD5(Req+rid+Args+Expires+API.SecretKey)
+# 
+# API.SecretKey: "uLgAAHMw62di3hUPypuETMWGzHx852swxM7V0b2HObba5gYNNrLkuvQ4I"
+# 例:
+# signature = md5("Login"+"1"+ JSON.stringify({UserName:"example@gaea.com",UserCred:"mVAAADjNHzhvehaEvU$BMJoU7BZk"}) +"1538222696758" + # API.SecretKey)
+# signature计算的值为:"74c33368e9a1f8d6d13cdf0bf5aa02a8"
 #
-{"req":"Login","rid":"0","expires":1537709540215,
-"args":{"UserName":"gmex-test@gmail.com","UserCred":"123123-123123-123123-123123"},
-"signature": "1234567890abcdef1234567890abcdef"
-}
+# {"req":"Login","rid":"1","expires":1538222696758,
+# "args":{"UserName":"example@gaea.com","UserCred":"mVAAADjNHzhvehaEvU$BMJoU7BZk"},
+# "signature": "74c33368e9a1f8d6d13cdf0bf5aa02a8"
+# }
 
 # 收到返回消息
 # 注意：
