@@ -1,4 +1,4 @@
-# GMEX WebSocket API (v1)
+# GMEX WebSocket API (v1) beta
 
 ## 说明
 
@@ -6,7 +6,7 @@
 请注意，行情和交易两个服务是分开的，行情接口无需认证可以自由访问，交易部分则需要用户开通API-KEY后通过自己的KEY认证授权后方可使用。
 
 
-GMEX官方的生产环境：
+GMEX官方的生产环境(暂未开放)：
 ```
 官方网址： https://www.gmex.io
 行情服务： wss://api-market.gmex.io/v1/market
