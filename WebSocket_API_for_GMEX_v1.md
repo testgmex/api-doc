@@ -539,7 +539,7 @@ type TrdRec struct {    // **成交结构体字段定义说明**
 | 22      |  EXCEED_PRZ_LIQ     | 超过强平价格 |
 | 23      |  TOO_MANY_ORDER     | 太多的委托 |
 | 24      |  DENYOPEN_BY_TIME     | 超出开仓时间限制 |
-| 25      |  MD5_INVALID     | MD5签名验证错误
-| 26      |  RATELIMIT     | 限速
+| 25      |  MD5_INVALID     | MD5签名验证错误 |
+| 26      |  RATELIMIT     | 限速,每秒50次API调用 |
 
 
