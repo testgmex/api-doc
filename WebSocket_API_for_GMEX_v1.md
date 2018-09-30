@@ -170,15 +170,23 @@ type AssetD struct {
 #    UserCred 为用户申请的API-KEY;
 # signature 用户消息签名: MD5(Req+rid+Args+Expires+API.SecretKey)
 # 
-# API.SecretKey: "uLgAAHMw62di3hUPypuETMWGzHx852swxM7V0b2HObba5gYNNrLkuvQ4I"
-# 例:
-# signature = md5("Login"+"1"+ JSON.stringify({UserName:"example@gaea.com",UserCred:"mVAAADjNHzhvehaEvU$BMJoU7BZk"}) +"1538222696758" + API.SecretKey)
-# signature计算的值为:"74c33368e9a1f8d6d13cdf0bf5aa02a8"
-#
+# # 例:
+# UserName: "example@gaea.com",
+# UserCred: "mVAAADjNHzhvehaEvU$BMJoU7BZk"
+# SecretKey: "uLgAAHMw62di3hUPypuETMWGzHx852swxM7V0b2HObba5gYNNrLkuvQ4I"
+# Req: "Login"
+# rid: 1
+# 则签名
+# signature = md5("Login"+"1"+ JSON.stringify({UserName:"example@gaea.com",UserCred:"mVAAADjNHzhvehaEvU$BMJoU7BZk"}) +"1538222696758" + SecretKey)
+# signature结果为:"74c33368e9a1f8d6d13cdf0bf5aa02a8"
+# 最终消息体形如
 # {"req":"Login","rid":"1","expires":1538222696758,
 # "args":{"UserName":"example@gaea.com","UserCred":"mVAAADjNHzhvehaEvU$BMJoU7BZk"},
 # "signature": "74c33368e9a1f8d6d13cdf0bf5aa02a8"
 # }
+#
+# 需要注意的是: Args 参数一般为JSON对象(除Time)，在签名时需要序列化为字符串，序列化没有字段顺序要求，但是需要保持签名时序列化的顺序与最终发出消息时序列化的顺序一致。
+# 补充: Time消息不要签名
 
 # 收到返回消息
 # 注意：
@@ -198,7 +206,7 @@ type AssetD struct {
 |args|用户的参数，可选，具体根据req来设置。|
 |signature|消息签名: MD5(Req+ReqId+Args+Expires+API.SecretKey)，小写。|
 
-## 重要说明
+# 重要说明
 
 + UID 和 AID
 	一个用户对应一个系统内唯一的UID(字符串);
@@ -531,7 +539,7 @@ type TrdRec struct {    // **成交结构体字段定义说明**
 | 22      |  EXCEED_PRZ_LIQ     | 超过强平价格 |
 | 23      |  TOO_MANY_ORDER     | 太多的委托 |
 | 24      |  DENYOPEN_BY_TIME     | 超出开仓时间限制 |
-| 25      |  MD5_INVALID     | MD5签名验证错误 |
-| 26      |  RATELIMIT     | 限速每秒50单量(包含下单和撤单) |
+| 25      |  MD5_INVALID     | MD5签名验证错误
+| 26      |  RATELIMIT     | 限速
 
 
