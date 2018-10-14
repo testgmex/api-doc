@@ -4,7 +4,7 @@
 
 ## Usage  
 
-        The following is runnable in [example.js](./example.js)
+   The following is runnable in [example.js](./example.js)
 
 ### To get started:
         npm install
@@ -81,4 +81,4 @@
         aid:UserId+"01";  // Future account
         aid:UserId+"02";  // Token trading account
  ```
-        More interfaces can refer to GAEA's [api](../WebSocket_API_for_GMEX_v1.md)
+   More interfaces can refer to GAEA's [api](../WebSocket_API_for_GMEX_v1.md)
