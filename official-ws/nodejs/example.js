@@ -43,7 +43,7 @@ market.on("kline",function (ret){
 });
 
 market.init({ws_url:test_market_url}, ()=>{
-		console.log("market connected!")
+    console.log("market connected!")
     market.request('GetInstruments',{},(ret)=>{
         console.log(`[market.GetInstruments]<< ${JSON.stringify(ret)}`)
         if(ret.code==0) {
@@ -76,10 +76,10 @@ if(!UserName||!secret_key||!api_key) console.warn("If you want to test trade, pl
 var userdata = {};
 trade.init({ws_url:test_trade_url,SecretKey: secret_key}, ()=>{
     console.log("trade connected!")
-  	var msg = {
+    var msg = {
       UserName: UserName,
       UserCred: api_key
-  	};
+    };
     trade.request('Login', msg, (ret)=>{
         console.log(`[trade.Login]<< ${JSON.stringify(ret)}`)
         if(ret.code==0) {
@@ -101,9 +101,9 @@ trade.init({ws_url:test_trade_url,SecretKey: secret_key}, ()=>{
                 console.log(`[trade.GetPositions]<< ${JSON.stringify(ret)}`)
             });
 
-						// do some trade etc, if you need
-						//trade.request('OrderNew', ....
-						//trade.request('OrderDel', ....
+           // do some trade etc, if you need
+           //trade.request('OrderNew', ....
+           //trade.request('OrderDel', ....
         }
     })
 });
