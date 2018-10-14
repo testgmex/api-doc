@@ -63,4 +63,4 @@ this is a demo for receiving realtime data and trade from the GAEA api.
         });
         aid:UserId+"01";  // Future account
         aid:UserId+"02";  // Token trading account
-   More interfaces can refer to [GAEA's api](../WebSocket_API_for_GMEX_v1.md)
+   More interfaces can refer to [GAEA's api](../../WebSocket_API_for_GMEX_v1.md)
