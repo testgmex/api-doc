@@ -22,12 +22,12 @@ this is a demo for receiving realtime data and trade from the GAEA api.
 
 ### Subscribe to some data.
         market.request('Sub',["order20_"+sym],(ret)=>{});
-        you can subscribe more data, like trade,tick,kline,orderl2
 
 ### Then you need to listen to this event.
         market.on("order20",function (ret){
                 // Do something with the ret...
         });
+   you can subscribe more data, like trade,tick,kline,orderl2
 
 ### You can also take the initiative to get some data.
         market.request('GetAssetD',{}, (ret)=>{
@@ -55,7 +55,7 @@ this is a demo for receiving realtime data and trade from the GAEA api.
         trade.on("onWallet",function (ret){
                 // Do something with the ret...
         });
-        You can listen to more data, like onOrder,onPosition,onTrade
+   You can listen to more data, like onOrder,onPosition,onTrade
 
 #### You can take the initiative to send messages to trade and get data.
         trade.request('GetWallets',{AId: aid}, (ret)=>{
