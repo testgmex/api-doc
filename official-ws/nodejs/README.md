@@ -35,14 +35,14 @@ this is a demo for receiving realtime data and trade from the GAEA api.
         });
 
 ## Trade:
-*If you want to trade, you must to login to the official website to create an api key in the user center.* 
+*If you want to trade, you must to login to the official website and create an api key in the user center.* 
         www.gmex.io or [simgo.gmex.io](simgo.gmex.io)
 
 ### Init the client.
         var trade = new GAEA();
         trade.init({ws_url:test_trade_url,SecretKey: secret_key}, ()=>{});
 
-#### If the initialization is successful, You must be logged in to verify your identity in order to trade.
+#### If the initialization is successful, it will be necessary to log in to verify the identity before trading.
         var msg = {
                 UserName: UserName,
                 UserCred: api_key
