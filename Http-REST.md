@@ -1,7 +1,7 @@
-# gemx.io Http REST API Docmution
+# gemx.io Http REST API Docmution
 
 ## 签名生成方法
-> 计算公式: MD5(req+args+expires+API.SecretKey)
+> 计算公式: MD5(req+args+expires+API.SecretKey)
   例如:
     req="GetWalletsLog"
     args={AId:"102041501"}
@@ -16,9 +16,9 @@
 ```JavaScript
     // 请求
     http GET http://192.168.2.48:20082/v1/rest/Time 
-    // 返回
+    // 返回
     {
-        "code": 0,              // 0成功,其它则为失败状态
+        "code": 0,              // 0成功,其它则为失败状态
         "data": "", 
         "time": 1544085815447   // 返回的服务器时间
     }
@@ -117,7 +117,7 @@
      * 参数说明
      * Sym:交易对名称
      * Sec:K线的起始时间
-     * Count: K线的数量
+     * Count: K线的数量
      * Type: K线的周期类型
      * Offset: 偏移量
      * */
@@ -153,7 +153,7 @@
                 9900955399.5
             ],
             "Typ": "1m",          // K线的周期,1m,3m,5m,15m,30m,1h,2h,4h,6h,8h,12h,1d,3d,1w, m:分钟 h:小时 d:天 w:周 M:月   
-            "Volume": [           // 交易量集合
+            "Volume": [           // 交易量集合
                 760,
                 1806176
             ]
@@ -181,7 +181,7 @@
             "Prz24": 108.54015,             // 24小时价格
             "RefThirdParty": {              // 采取的现货交易所的信息
                 "binance": {                        
-                    "prz": 100.38,          // 价格
+                    "prz": 100.38,          // 价格
                     "status": 0,            // 状态
                     "vol": 0                // 量
                 },
@@ -266,7 +266,7 @@
                 "At": 1544097003149,                        // 时间
                 "Dir": -1,                                  // 交易方向 1买 -1卖
                 "MatchID": "01CY1DM65TM4558969P8QTZ4DB",    // 撮合ID
-                "Prz": 3811,                                // 价格
+                "Prz": 3811,                                // 价格
                 "Sym": "BTC1812",                           // 交易对名称
                 "Sz": 102,                                  // 成交量,大于0的为买,小于0为卖
                 "Val": 0.0267646287                         
@@ -372,7 +372,7 @@
      * username: 用户名
      * apikey: 用户在官网申请的apikey
      * args: {
-     *  AId: 账号AId,合约AId=UserID+'01',现货AId=UserID+'02',例如UserID为1020415,获取的是合约的信息,AId则为"1020415"+"01"==>"102041501"
+     *  AId: 账号AId,合约AId=UserID+'01',现货AId=UserID+'02',例如UserID为1020415,获取的是合约的信息,AId则为"1020415"+"01"==>"102041501"
      * }
      * expires: 消息的有效时间
      * signature: 签名,参考签名生成方法
@@ -428,7 +428,7 @@
      * username: 用户名
      * apikey: 用户在官网申请的apikey
      * args: {
-     *  AId: 账号AId,合约AId=UserID+'01',现货AId=UserID+'02',例如UserID为1020415,获取的是合约的信息,AId则为"1020415"+"01"==>"102041501"
+     *  AId: 账号AId,合约AId=UserID+'01',现货AId=UserID+'02',例如UserID为1020415,获取的是合约的信息,AId则为"1020415"+"01"==>"102041501"
      * }
      * expires: 消息的有效时间
      * signature: 签名,参考签名生成方法
@@ -482,7 +482,7 @@
      * username: 用户名
      * apikey: 用户在官网申请的apikey
      * args: {
-     *  AId: 账号AId,合约AId=UserID+'01',现货AId=UserID+'02',例如UserID为1020415,获取的是合约的信息,AId则为"1020415"+"01"==>"102041501"
+     *  AId: 账号AId,合约AId=UserID+'01',现货AId=UserID+'02',例如UserID为1020415,获取的是合约的信息,AId则为"1020415"+"01"==>"102041501"
      * }
      * expires: 消息的有效时间
      * signature: 签名,参考签名生成方法
@@ -565,7 +565,7 @@
      * username: 用户名
      * apikey: 用户在官网申请的apikey
      * args: {
-     *  AId: 账号AId,合约AId=UserID+'01',现货AId=UserID+'02',例如UserID为1020415,获取的是合约的信息,AId则为"1020415"+"01"==>"102041501"
+     *  AId: 账号AId,合约AId=UserID+'01',现货AId=UserID+'02',例如UserID为1020415,获取的是合约的信息,AId则为"1020415"+"01"==>"102041501"
      * }
      * expires: 消息的有效时间
      * signature: 签名,参考签名生成方法
@@ -609,7 +609,7 @@
      * username: 用户名
      * apikey: 用户在官网申请的apikey
      * args: {
-     *  AId: 账号AId,合约AId=UserID+'01',现货AId=UserID+'02',例如UserID为1020415,获取的是合约的信息,AId则为"1020415"+"01"==>"102041501"
+     *  AId: 账号AId,合约AId=UserID+'01',现货AId=UserID+'02',例如UserID为1020415,获取的是合约的信息,AId则为"1020415"+"01"==>"102041501"
      * }
      * expires: 消息的有效时间
      * signature: 签名,参考签名生成方法
@@ -651,7 +651,7 @@
     }
 ```
 
-* 委托下单OrderNew
+* 委托下单OrderNew
 ```JavaScript
     // 请求
     /**
@@ -661,8 +661,8 @@
      * username: 用户名
      * apikey: 用户在官网申请的apikey
      * args: {
-     *  AId: 账号AId,合约AId=UserID+'01',现货AId=UserID+'02',例如UserID为1020415,获取的是合约的信息,AId则为"1020415"+"01"==>"102041501"
-     *  Prz: 非条件或者非止盈止损时的价格
+     *  AId: 账号AId,合约AId=UserID+'01',现货AId=UserID+'02',例如UserID为1020415,获取的是合约的信息,AId则为"1020415"+"01"==>"102041501"
+     *  Prz: 非条件或者非止盈止损时的价格
      *  Qty: 委托的数量
      *  Dir: 交易的方向,1买 -1卖
      *  DspQty: 冰山的数量,大于0小于委托量则在盘口显示的是冰山的值,等于0则显示实际委托的量
@@ -718,13 +718,13 @@
 ```JavaScript
     // 请求
     /**
-     * 接口功能: 用户撤单操作
+     * 接口功能: 用户撤单操作
      * 参数说明:
      * req: Action类型
      * username: 用户名
      * apikey: 用户在官网申请的apikey
      * args: {
-     *  AId: 账号AId,合约AId=UserID+'01',现货AId=UserID+'02',例如UserID为1020415,获取的是合约的信息,AId则为"1020415"+"01"==>"102041501"
+     *  AId: 账号AId,合约AId=UserID+'01',现货AId=UserID+'02',例如UserID为1020415,获取的是合约的信息,AId则为"1020415"+"01"==>"102041501"
      *  Sym: 交易对名称
      *  OrdId: 需要撤销的OrdId
      * }
@@ -774,7 +774,7 @@
      * username: 用户名
      * apikey: 用户在官网申请的apikey
      * args: {
-     *  AId: 账号AId,合约AId=UserID+'01',现货AId=UserID+'02',例如UserID为1020415,获取的是合约的信息,AId则为"1020415"+"01"==>"102041501"
+     *  AId: 账号AId,合约AId=UserID+'01',现货AId=UserID+'02',例如UserID为1020415,获取的是合约的信息,AId则为"1020415"+"01"==>"102041501"
      *  Sym: 交易对的名称
      *  PId: 持仓Id,暂时可以传null
      *  Param: 杠杆的值
@@ -800,7 +800,7 @@
      * username: 用户名
      * apikey: 用户在官网申请的apikey
      * args: {
-     *  AId: 账号AId,合约AId=UserID+'01',现货AId=UserID+'02',例如UserID为1020415,获取的是合约的信息,AId则为"1020415"+"01"==>"102041501"
+     *  AId: 账号AId,合约AId=UserID+'01',现货AId=UserID+'02',例如UserID为1020415,获取的是合约的信息,AId则为"1020415"+"01"==>"102041501"
      *  Sym: 交易对的名称
      *  PId: 持仓Id
      *  Param: 杠杆的值
@@ -809,14 +809,14 @@
      * signature: 签名,参考签名生成方法
      * */ 
     echo '{"args":{"Sym":"BTC1812","AId":"102041501","PId":"01CXT69HBDZXF36MW2NHPBDG43","Param":500},"req":"PosTransMgn","expires":1544171208181,"signature":"07ebfaf6202dfa1d1f74cbfa5a5ebf83","username":"tt@gaea.com","apikey":"bEwAA4NCzhexYsNtnyaYnhbMFQw"}' | http POST http://192.168.2.48:50302/v1/rest/Action
-    // 返回
+    // 返回
     {
         "code": 0,   // 0成功,其它则失败
         "data": {}
     }    
 ```
 
-* 超时撤单CancelAllAfter
+* 超时撤单CancelAllAfter
 ```JavaScript
     // 请求
     /**
@@ -826,8 +826,8 @@
      * username: 用户名
      * apikey: 用户在官网申请的apikey
      * args: {
-     *  AId: 账号AId,合约AId=UserID+'01',现货AId=UserID+'02',例如UserID为1020415,获取的是合约的信息,AId则为"1020415"+"01"==>"102041501"
-     *  Sec: 超时时间
+     *  AId: 账号AId,合约AId=UserID+'01',现货AId=UserID+'02',例如UserID为1020415,获取的是合约的信息,AId则为"1020415"+"01"==>"102041501"
+     *  Sec: 超时时间
      * }
      * expires: 消息的有效时间
      * signature: 签名,参考签名生成方法
