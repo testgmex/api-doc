@@ -1,16 +1,27 @@
 # gemx.io Http API Docmution
 
+# 说明
+    该API为GEMX(https://www.gmex.io)用于对外提供的http rest api接口文档说明.
+    该api可供开发者进行行情数据的获取和交易服务的操作,请注意行情和交易是两个不同服务器。其中交易服务操作是需要用户提供相应的[签名](http://www.baidu.com)方可验证是否能获取到数据,
+
+    GMEX官方的生产环境:
+        官网地址: https://www.gmex.io
+        行情服务: http://api-market.gmex.io/v1/market
+        交易服务: http://api-trade.gmex.io/v1/trade
+    
+    GMEX官方的模拟环境(供开发者测试使用):
+        官网地址: https://www.simgo.gmex.io
+        行情服务: http://www.market01.gmex.io/v1/market
+        交易服务: http://www.trade01.gmex.io/v1/trade
 ## 签名生成方法
-```JavaScript
-/**
-  * 计算公式: MD5(req+args+expires+API.SecretKey)
-  * 例如:
-  *  req="GetWalletsLog"
-  *  args={AId:"102041501"}
-  *  expires=1544167142509
-  *  API.secretKey=bPQAAHKFnC%ywLNt2ydROYc58H%l47Be0bbw9NzNkbwd3ltgayNsOJg (API.SecretKey为用户在官网申请API时生成的SecretKey)
-  * 通过计算得到的签名:b094142522364fab85ef82b8f875ca89
-```    
+> 计算公式: MD5(req+args+expires+API.SecretKey)
+  例如:
+    req="GetWalletsLog"
+    args={AId:"102041501"}
+    expires=1544167142509
+    API.secretKey=bPQAAHKFnC%ywLNt2ydROYc58H%l47Be0bbw9NzNkbwd3ltgayNsOJg (API.SecretKey为用户在官网申请API时生成的SecretKey)
+  通过计算得到的签名:b094142522364fab85ef82b8f875ca89
+    
 
 ## 行情API示例
 
@@ -18,9 +29,9 @@
 ```JavaScript
     // 请求
     http GET http://192.168.2.48:20082/v1/rest/Time 
-    // 返回
+    // 返回
     {
-        "code": 0,              // 0成功,其它则为失败状态
+        "code": 0,              // 0成功,其它则为失败状态
         "data": "", 
         "time": 1544085815447   // 返回的服务器时间
     }
@@ -119,7 +130,7 @@
      * 参数说明
      * Sym:交易对名称
      * Sec:K线的起始时间
-     * Count: K线的数量
+     * Count: K线的数量
      * Type: K线的周期类型
      * Offset: 偏移量
      * */
@@ -155,7 +166,7 @@
                 9900955399.5
             ],
             "Typ": "1m",          // K线的周期,1m,3m,5m,15m,30m,1h,2h,4h,6h,8h,12h,1d,3d,1w, m:分钟 h:小时 d:天 w:周 M:月   
-            "Volume": [           // 交易量集合
+            "Volume": [           // 交易量集合
                 760,
                 1806176
             ]
@@ -183,7 +194,7 @@
             "Prz24": 108.54015,             // 24小时价格
             "RefThirdParty": {              // 采取的现货交易所的信息
                 "binance": {                        
-                    "prz": 100.38,          // 价格
+                    "prz": 100.38,          // 价格
                     "status": 0,            // 状态
                     "vol": 0                // 量
                 },
@@ -268,7 +279,7 @@
                 "At": 1544097003149,                        // 时间
                 "Dir": -1,                                  // 交易方向 1买 -1卖
                 "MatchID": "01CY1DM65TM4558969P8QTZ4DB",    // 撮合ID
-                "Prz": 3811,                                // 价格
+                "Prz": 3811,                                // 价格
                 "Sym": "BTC1812",                           // 交易对名称
                 "Sz": 102,                                  // 成交量,大于0的为买,小于0为卖
                 "Val": 0.0267646287                         
@@ -374,7 +385,7 @@
      * username: 用户名
      * apikey: 用户在官网申请的apikey
      * args: {
-     *  AId: 账号AId,合约AId=UserID+'01',现货AId=UserID+'02',例如UserID为1020415,获取的是合约的信息,AId则为"1020415"+"01"==>"102041501"
+     *  AId: 账号AId,合约AId=UserID+'01',现货AId=UserID+'02',例如UserID为1020415,获取的是合约的信息,AId则为"1020415"+"01"==>"102041501"
      * }
      * expires: 消息的有效时间
      * signature: 签名,参考签名生成方法
@@ -484,7 +495,7 @@
      * username: 用户名
      * apikey: 用户在官网申请的apikey
      * args: {
-     *  AId: 账号AId,合约AId=UserID+'01',现货AId=UserID+'02',例如UserID为1020415,获取的是合约的信息,AId则为"1020415"+"01"==>"102041501"
+     *  AId: 账号AId,合约AId=UserID+'01',现货AId=UserID+'02',例如UserID为1020415,获取的是合约的信息,AId则为"1020415"+"01"==>"102041501"
      * }
      * expires: 消息的有效时间
      * signature: 签名,参考签名生成方法
@@ -611,7 +622,7 @@
      * username: 用户名
      * apikey: 用户在官网申请的apikey
      * args: {
-     *  AId: 账号AId,合约AId=UserID+'01',现货AId=UserID+'02',例如UserID为1020415,获取的是合约的信息,AId则为"1020415"+"01"==>"102041501"
+     *  AId: 账号AId,合约AId=UserID+'01',现货AId=UserID+'02',例如UserID为1020415,获取的是合约的信息,AId则为"1020415"+"01"==>"102041501"
      * }
      * expires: 消息的有效时间
      * signature: 签名,参考签名生成方法
@@ -653,7 +664,7 @@
     }
 ```
 
-* 委托下单OrderNew
+* 委托下单OrderNew
 ```JavaScript
     // 请求
     /**
