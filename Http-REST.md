@@ -1,4 +1,4 @@
-# gemx.io Http REST API Docmution
+# gemx.io Http API Docmution
 
 ## 签名生成方法
 ```JavaScript
