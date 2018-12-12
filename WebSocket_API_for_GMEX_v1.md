@@ -500,6 +500,38 @@ type TrdRec struct {    // **成交结构体字段定义说明**
 }
 
 ```
+ 14. 查询用户的风险限额GetRiskLimit
+```JavaScript
+    /**
+    * 功能: 查询某个交易对用户的风险限额
+    * 参数说明:
+    * expires: 消息的有效时间
+    * req: 'GetRiskLimit'   // 请求的动作名称
+    * signature: ""        // 签名,参考签名的生成规则
+    * args: {
+    *  "AId": "", // 账号的AId,
+    *  "Sym": "", // 交易对名称
+    * }
+    */
+    // 请求发送参数
+    {"req":"GetRiskLimit","rid":"15","expires":1537712072667,"args":{"AId":"123456701",Sym:"BTC1812"},"signature": "1234567890abcdef1234567890abcdef"}
+    // 接收到的返回消息
+    {"rid":"15","code":0,"data":{....}}
+    
+    // RiskLimit的数据结构
+    type RiskLimitDef struct {
+	 Sym         string      // Symbol 交易对
+	 Base        float64     // Base Risk Limit 当 Pos Val < Base 的时候，
+	 BaseMMR     float64     // Base Maintenance Margin Val < Base 的时候 MMR
+	 BaseMIR     float64     // Initial Margin  Val < Base 的时候 MIR
+	 Step        float64     // Step  StepS = math.Ceil((Val - Base)/Step) 表示递增次数
+	 StepMR      float64     // StepM  每次递增的时候，MMR MIR 的增量
+	 PosSzMax    float64     // 最大持仓
+    }
+
+```
+
+
 ## 相关术语
 | 名称 | 描述 |
 | :------: | :------ |
