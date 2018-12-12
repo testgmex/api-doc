@@ -506,6 +506,7 @@ type TrdRec struct {    // **成交结构体字段定义说明**
     * 功能: 查询某个交易对用户的风险限额
     * 参数说明:
     * expires: 消息的有效时间
+    * rid: 10   //
     * req: 'GetRiskLimit'   // 请求的动作名称
     * signature: ""        // 签名,参考签名的生成规则
     * args: {
