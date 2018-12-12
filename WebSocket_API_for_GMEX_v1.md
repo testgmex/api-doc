@@ -506,7 +506,7 @@ type TrdRec struct {    // **成交结构体字段定义说明**
     * 功能: 查询某个交易对用户的风险限额
     * 参数说明:
     * expires: 消息的有效时间
-    * rid: 10   //
+    * rid: 10   //用户发送请求的唯一编号，由于websocket是异步通讯，用户需要通过匹配收到消息的rid和自己发送的rid来匹配操作和应答。
     * req: 'GetRiskLimit'   // 请求的动作名称
     * signature: ""        // 签名,参考签名的生成规则
     * args: {
