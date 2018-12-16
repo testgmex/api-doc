@@ -664,7 +664,7 @@
     }
 ```
 
-* 委托下单OrderNew
+* 委托下单OrderNew
 ```JavaScript
     // 请求
     /**
