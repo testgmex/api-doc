@@ -998,6 +998,8 @@ type TrdRec struct {        // **成交结构体字段定义说明**
     // 接收到的返回消息
     {"rid":"15","code":0,"data":{....}}
     
+```
+```golang
     // RiskLimit的数据结构
     type RiskLimitDef struct {
 	 Sym         string      // Symbol 交易对
@@ -1006,10 +1008,9 @@ type TrdRec struct {        // **成交结构体字段定义说明**
 	 BaseMIR     float64     // Initial Margin  Val < Base 的时候 MIR
 	 Step        float64     // Step  StepS = math.Ceil((Val - Base)/Step) 表示递增次数
 	 StepMR      float64     // StepM  每次递增的时候，MMR MIR 的增量
-     PosSzMax    float64     // 最大持仓
-     StepIR      float64     // 每次递增的时候，MIR 的增量
+         PosSzMax    float64     // 最大持仓
+         StepIR      float64     // 每次递增的时候，MIR 的增量
     }
-
 ```
 
 
