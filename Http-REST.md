@@ -29,7 +29,7 @@
 ```JavaScript
     // 请求
     http GET http://192.168.2.48:20082/v1/rest/Time 
-    // 返回
+    // 返回
     {
         "code": 0,              // 0成功,其它则为失败状态
         "data": "", 
@@ -385,7 +385,7 @@
      * username: 用户名
      * apikey: 用户在官网申请的apikey
      * args: {
-     *  AId: 账号AId,合约AId=UserID+'01',现货AId=UserID+'02',例如UserID为1020415,获取的是合约的信息,AId则为"1020415"+"01"==>"102041501"
+     *  AId: 账号AId,合约AId=UserID+'01',现货AId=UserID+'02',例如UserID为1020415,获取的是合约的信息,AId则为"1020415"+"01"==>"102041501"
      * }
      * expires: 消息的有效时间
      * signature: 签名,参考签名生成方法
@@ -495,7 +495,7 @@
      * username: 用户名
      * apikey: 用户在官网申请的apikey
      * args: {
-     *  AId: 账号AId,合约AId=UserID+'01',现货AId=UserID+'02',例如UserID为1020415,获取的是合约的信息,AId则为"1020415"+"01"==>"102041501"
+     *  AId: 账号AId,合约AId=UserID+'01',现货AId=UserID+'02',例如UserID为1020415,获取的是合约的信息,AId则为"1020415"+"01"==>"102041501"
      * }
      * expires: 消息的有效时间
      * signature: 签名,参考签名生成方法
@@ -851,6 +851,39 @@
         "code": 0,      // 0成功,其它则失败
         "data": {}
     }
+```
+
+* 获取用户风险限额
+```js
+    // 请求
+    /**
+     * 接口功能: 查询用户风险限额(内测中,不建议使用)
+     * 参数说明:
+     * req: Action类型
+     * username: 用户名
+     * apikey: 用户在官网上申请的apikey
+     * args: {
+     *  AId: 账号AId,合约AId=UserID+'01',现货AId=UserID+'02',例如UserID为1020415,获取的是合约的信息,AId则为"1020415"+"01"==>"102041501"
+     *  Sym: 交易对名称
+     * }
+     * */
+    echo '{"args":{"AId":"102041501","Sym":"BTC1812"},"req":"GetRiskLimit","expires":1544965066515,"signature":"12467507854c08c09e75142cef1c0f64","username":"tt@gaea.com","apikey":"bEwAA4NCzhexYsNtnyaYnhbMFQw"}' | http POST http://192.168.2.48:50302/v1/rest/Action
+
+    // 返回
+    {
+    "code": 0,
+    "data": {
+        "Base": 1000000,        // Base Risk Limit 当 Pos Val < Base 的时候
+        "BaseMIR": 0.01,        // Initial Margin  Val < Base 的时候 MIR
+        "BaseMMR": 0.005,       // Base Maintenance Margin Val < Base 的时候 MMR 
+        "MaxOrdVal": 50000,     // 最大挂单量
+        "PosSzMax": 1500000,    // 最大持仓
+        "Step": 10,             // Step  StepS = math.Ceil((Val - Base)/Step) 表示递增次数
+        "StepIR": 0.005,        // 每次递增的时候，MIR 的增量
+        "StepMR": 0.005,        // StepM  每次递增的时候，MMR MIR 的增量
+        "Sym": "BTC1812"      // 交易对
+    }
+}
 ```
 
 
