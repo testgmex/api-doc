@@ -7,12 +7,12 @@
     GMEX官方的生产环境:
         官网地址: https://www.gmex.io
         行情服务: https://rest-market.gmex.io/v1/rest/
-        交易服务: https://rest-trade.gmex.io/v1/
+        交易服务: https://rest-trade.gmex.io/v1/rest
     
     GMEX官方的模拟环境(供开发者测试使用):
         官网地址: https://www.simgo.gmex.io
         行情服务: https://market02.gmex.io/v1/rest
-        交易服务: https://trade02.gmex.io/v1/rest/Action
+        交易服务: https://trade02.gmex.io/v1/rest
 ## 签名生成方法
 > 计算公式: MD5(req+args+expires+API.SecretKey)
   例如:
