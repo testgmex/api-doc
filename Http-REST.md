@@ -51,11 +51,13 @@
                 "FeeMkrR": 0.0001,                      // 被动单手续费
                 "FeeTkrR": 0.0003,                      // 主动单手续费    
                 "FromC": "USDT",                       
-                "FundingInterval": 28800,
-                "FundingLongR": 5e-05,
-                "FundingNext": 1544112000000,
-                "FundingPredictedR": 0,
-                "FundingShortR": 0.0005,
+                "FundingInterval": 28800,               // 结算间隔(毫秒)
+                "FundingLongR": 5e-05,                  // 当前周期内的资金费率
+                "FundingNext": 1544112000000,           // 下次结算时间戳
+                "FundingPredictedR": 0,                 // 下个周期预测的资金费率
+                "FundingShortR": 0.0005,                // 当前字段未使用
+		"FundingTolerance": 59,                 // 偏移宽容度
+		"FundingFeeR": 60,                      // Funding结算佣金
                 "LiqR": 0,
                 "LotSz": 1.0,                           // 最小委托量
                 "MIR": 0.02,                            // 初始保证金率
@@ -85,9 +87,6 @@
                 "TotalVol": 3517956643,     
                 "TrdCls": 3,                            // 交易对的类型 1.合约 2.现货 3.永续
                 "Turnover": 0,
-                "FundingLongR":0,                       // 多仓资金费率
-	            "FundingPredictedR":0,                  // 预测费率
-	            "FundingShortR":0                       // 空仓资金费率
             }
         ]
     }
@@ -260,9 +259,9 @@
             "Turnover24": 659690.3038108406,  // 24小时成交额
             "Volume": 72569054316,         // 总成交量
             "Volume24": 2503022033,         // 24小时总成交量
-            "FundingLongR":0,             // 多仓资金费率
-	        "FundingPredictedR":0,        // 预测费率
-	        "FundingShortR":0             // 空仓资金费率
+            "FundingLongR":0,               // 当前周期内的资金费率
+	    "FundingPredictedR":0,          // 下个周期预测的资金费率
+	    "FundingShortR":0               // 当前字段未使用
         }
     }
 ```
