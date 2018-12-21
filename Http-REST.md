@@ -84,7 +84,10 @@
                 "ToC": "XRP",
                 "TotalVol": 3517956643,     
                 "TrdCls": 3,                            // 交易对的类型 1.合约 2.现货 3.永续
-                "Turnover": 0                           
+                "Turnover": 0,
+                "FundingLongR":0,                       // 多仓资金费率
+	            "FundingPredictedR":0,                  // 预测费率
+	            "FundingShortR":0                       // 空仓资金费率
             }
         ]
     }
@@ -256,7 +259,10 @@
             "Turnover": 0.0118079244,      // 总成交额
             "Turnover24": 659690.3038108406,  // 24小时成交额
             "Volume": 72569054316,         // 总成交量
-            "Volume24": 2503022033         // 24小时总成交量
+            "Volume24": 2503022033,         // 24小时总成交量
+            "FundingLongR":0,             // 多仓资金费率
+	        "FundingPredictedR":0,        // 预测费率
+	        "FundingShortR":0             // 空仓资金费率
         }
     }
 ```
