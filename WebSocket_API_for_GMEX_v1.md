@@ -62,7 +62,10 @@ GMEX官方的生产环境(暂未开放)：
             "SettleCoin":"ETH",
             "QuoteCoin":"ETH",
             "SettleR":0.0005,
-            "DenyOpenAfter":1545980400000
+            "DenyOpenAfter":1545980400000,
+	    "FundingLongR":0,             // 多仓资金费率
+	    "FundingPredictedR":0,        // 预测费率
+	    "FundingShortR":0             // 空仓资金费率
         },
         {"Sym":"BTC1812","Beg":1,"Expire":1545984000000,"PrzMaxChg":1000,"PrzMinInc":0.5,"PrzMax":1000000,"OrderMaxQty":10000000,"LotSz":1,"PrzM":6731.3100000000004001776687800884246826171875,"MIR":0.07,"MMR":0.05,"OrderMinVal":0,"PrzLatest":6731.0,"OpenInterest":3431840,"PrzIndex":6737.3525,"PosLmtStart":10000000,"PosOpenRatio":0.05,"FeeMkrR":-0.0003,"FeeTkrR":0.0007,"Mult":1,"FromC":"BTC","ToC":"USD","TrdCls":2,"MkSt":1,"Flag":1,"SettleCoin":"BTC","QuoteCoin":"BTC","SettleR":0.0005,"DenyOpenAfter":1545980400000},
         {"Sym":"ETH1809","Beg":1,"Expire":1538121600000,"PrzMaxChg":1000,"PrzMinInc":0.05,"PrzMax":1000000,"OrderMaxQty":10000000,"LotSz":1,"PrzM":244.19999999999998863131622783839702606201171875,"MIR":0.07,"MMR":0.05,"OrderMinVal":0,"PrzLatest":244.20,"OpenInterest":4500733,"PrzIndex":244.8863,"PosLmtStart":10000000,"PosOpenRatio":0.05,"FeeMkrR":-0.0003,"FeeTkrR":0.0007,"Mult":1,"FromC":"ETH","ToC":"USD","TrdCls":2,"MkSt":1,"Flag":1,"SettleCoin":"ETH","QuoteCoin":"ETH","SettleR":0.0005,"DenyOpenAfter":1538118000000},
@@ -110,6 +113,9 @@ type AssetD struct {
     SettleCoin          string  // 结算货币
     QuoteCoin           string  // 报价货币
     SettleR             float64 // 结算费率
+    FundingLongR        double     // 多仓资金费率
+    FundingPredictedR   double     // 预测费率
+    FundingShortR       double     // 空仓资金费率
 }
 ```
 
@@ -220,7 +226,10 @@ type AssetD struct {
         "Turnover24":843.7992005395208,
         "Volume":40901214,
         "Turnover":0,
-        "OpenInterest":3436394
+        "OpenInterest":3436394,
+	"FundingLongR":0,             // 多仓资金费率
+	"FundingPredictedR":0,        // 预测费率
+	"FundingShortR":0             // 空仓资金费率
     }
 }
 
