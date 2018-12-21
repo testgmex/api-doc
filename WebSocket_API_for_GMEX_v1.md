@@ -63,9 +63,9 @@ GMEX官方的生产环境(暂未开放)：
             "QuoteCoin":"ETH",
             "SettleR":0.0005,
             "DenyOpenAfter":1545980400000,
-	    "FundingLongR":0,             // 多仓资金费率
-	    "FundingPredictedR":0,        // 预测费率
-	    "FundingShortR":0,            // 空仓资金费率
+	    "FundingLongR":0,             // 当前周期内的资金费率
+	    "FundingPredictedR":0,        // 下个周期预测的资金费率
+	    "FundingShortR":0,            // 当前未使用字段
 	    "FundingInterval": 55,        // 结算间隔(毫秒)
 	    "FundingNext": 56, 	          // 下次结算时间戳
 	    "FundingTolerance": 59,       // 偏移宽容度
@@ -117,9 +117,9 @@ type AssetD struct {
     SettleCoin          string  // 结算货币
     QuoteCoin           string  // 报价货币
     SettleR             float64 // 结算费率
-    FundingLongR        double     // 多仓资金费率
+    FundingLongR        double     // 当前周期内的资金费率
     FundingPredictedR   double     // 预测费率
-    FundingShortR       double     // 空仓资金费率
+    FundingShortR       double     // 当前未使用字段
     FundingInterval     uint32     // 结算间隔(毫秒)
     FundingNext 	int64      // 下次结算时间戳
     FundingTolerance    double     // 偏移宽容度
