@@ -118,7 +118,7 @@ type AssetD struct {
     QuoteCoin           string  // 报价货币
     SettleR             float64 // 结算费率
     FundingLongR        double     // 当前周期内的资金费率
-    FundingPredictedR   double     // 预测费率
+    FundingPredictedR   double     // 下个周期预测的资金费率
     FundingShortR       double     // 当前未使用字段
     FundingInterval     uint32     // 结算间隔(毫秒)
     FundingNext 	int64      // 下次结算时间戳
@@ -235,9 +235,9 @@ type AssetD struct {
         "Volume":40901214,
         "Turnover":0,
         "OpenInterest":3436394,
-	"FundingLongR":0,             // 多仓资金费率
-	"FundingPredictedR":0,        // 预测费率
-	"FundingShortR":0             // 空仓资金费率
+	"FundingLongR":0,             // 当前周期内的资金费率
+	"FundingPredictedR":0,        // 下个周期预测的资金费率
+	"FundingShortR":0             // 当前未使用字段
     }
 }
 
