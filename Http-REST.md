@@ -384,13 +384,13 @@
 ```JavaScript
     // 请求
     /**
-     * 接口功能: 获取用户的钱包信息
+     * 接口功能: 获取用户的钱包信息,钱包分为币币钱包、合约钱包、我的钱包
      * 参数说明:
      * req: Action类型
      * username: 用户名
      * apikey: 用户在官网申请的apikey
      * args: {
-     *  AId: 账号AId,合约AId=UserID+'01',现货AId=UserID+'02',例如UserID为1020415,获取的是合约的信息,AId则为"1020415"+"01"==>"102041501"
+     *  AId: 账号AId,合约钱包AId=UserID+'01',现货钱包AId=UserID+'02',我的钱包AId=USerID+'03' 例如UserID为1020415,获取的是合约的信息,AId则为"1020415"+"01"==>"102041501"
      * }
      * expires: 消息的有效时间
      * signature: 签名,参考签名生成方法
@@ -440,13 +440,13 @@
 ```JavaScript
     // 请求
     /**
-     * 接口功能: 获取用户的钱包日志信息
+     * 接口功能: 获取用户的钱包日志信息,钱包分为币币钱包、合约钱包、我的钱包
      * 参数说明:
      * req: Action类型
      * username: 用户名
      * apikey: 用户在官网申请的apikey
      * args: {
-     *  AId: 账号AId,合约AId=UserID+'01',现货AId=UserID+'02',例如UserID为1020415,获取的是合约的信息,AId则为"1020415"+"01"==>"102041501"
+     *  AId: 账号AId,合约钱包AId=UserID+'01',现货钱包AId=UserID+'02',我的钱包AId=USerID+'03',例如UserID为1020415,获取的是合约的信息,AId则为"1020415"+"01"==>"102041501"
      * }
      * expires: 消息的有效时间
      * signature: 签名,参考签名生成方法
