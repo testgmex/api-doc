@@ -886,10 +886,15 @@ args: {
 13. 用户收到的推送消息
 
 用户登录后会收到的推送消息的subj有：
+
 报单通知 onOrder
+
 持仓通知 onPosition
+
 钱包通知 onWallet
+
 钱包日志 onWltLog
+
 成交通知 onTrade
 
 ```js
