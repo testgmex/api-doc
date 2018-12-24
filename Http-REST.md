@@ -15,11 +15,17 @@
         交易服务: https://trade02.gmex.io/v1/rest
 ## 签名生成方法
 > 计算公式: MD5(req+args+expires+API.SecretKey)
+
   例如:
+  
     req="GetWalletsLog"
+    
     args={AId:"102041501"}
+    
     expires=1544167142509
+    
     API.secretKey=bPQAAHKFnC%ywLNt2ydROYc58H%l47Be0bbw9NzNkbwd3ltgayNsOJg (API.SecretKey为用户在官网申请API时生成的SecretKey)
+    
   通过计算得到的签名:b094142522364fab85ef82b8f875ca89
     
 
