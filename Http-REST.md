@@ -151,7 +151,7 @@
      * Offset: 偏移量
      * */
      
-    http POST https://market02.gmex.io/v1/rest/GetHistKLine Sym='BTC1812' Sec:=1541987816 Count:=2 Offset:=0 Typ='1m'
+    http POST https://market02.gmex.io/v1/rest/GetHistKLine  Sym='BTC1812' Sec:=1541987816 Count:=2 Offset:=0 Typ='1m'
     
     // 返回
     {
