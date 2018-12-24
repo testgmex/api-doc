@@ -392,7 +392,8 @@
      * signature: 签名,参考签名生成方法
      * */ 
      
-    echo '{"req":"GetUserInfo", "username":"tt@gaea.com", "args":{}, "apikey":"bEwAA4NCzhexYsNtnyaYnhbMFQw", "expires":1544166435858, "signature":"7166be64f351c68318c835d4eb219cc3"}' | http POST \ https://trade02.gmex.io/v1/rest/Action
+    echo '{"req":"GetUserInfo", "username":"tt@gaea.com", "args":{}, "apikey":"bEwAA4NCzhexYsNtnyaYnhbMFQw", "expires":1544166435858, "signature":"7166be64f351c68318c835d4eb219cc3"}'
+    | http POST https://trade02.gmex.io/v1/rest/Action
     
     //返回
     {
