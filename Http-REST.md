@@ -12,7 +12,7 @@
         交易服务: https://api-trade.gmex.io/v1/rest
     
     GMEX官方的模拟环境(供开发者测试使用):
-        官网地址: https://www.simgo.gmex.io
+        官网地址: https://simgo.gmex.io
         行情服务: https://market02.gmex.io/v1/rest
         交易服务: https://trade02.gmex.io/v1/rest
 ## 签名生成方法
