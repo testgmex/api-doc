@@ -941,7 +941,7 @@ type Ord struct {    // **报单结构体字段定义说明**
     Frz     float64  // 冻结的金额
     ErrCode int32    // 错误编码
     ErrTxt  string   // 错误文本
-    Status  int32    // 0-无效, 1-正在排队, 2-有效(撮合中), 3-提交失败, 4-已执行, 5-取消, 6-部分执行, 7-执行失败
+    Status  int32    // 0-无效, 1-正在排队, 2-有效(撮合中), 3-提交失败, 4-已执行, 其它值则表示执行失败,参考ErrCode,ErrTxt
     QtyF    float64  // 已成交
     PrzF    float64  // 已成交的平均价格
     Val     float64  // 合约价值:
