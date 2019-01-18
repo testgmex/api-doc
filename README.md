@@ -8,6 +8,5 @@
     2.Http REST API说明文档:Http-REST.md
 
 #### WebScoket API调试例子
-    参见:official-ws/nodejs
-    (https://www.gmex.io)
+    参见:official-ws/nodejs (https://www.gmex.io) .
 
